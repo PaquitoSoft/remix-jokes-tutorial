@@ -1,6 +1,7 @@
 import type { ActionFunction } from "remix";
 import { useActionData, json, redirect } from "remix";
 import { db } from '~/utils/db.server';
+import { requireUserId } from '~/utils/session.server';
 
 function NewJokesRoute() {
 	const actionData = useActionData<ActionData>();
@@ -100,6 +101,7 @@ type ActionData = {
 const badRequest = (data: ActionData) => json(data, { status: 400 });
 
 export const action: ActionFunction = async ({ request }) => {
+	const userId = await requireUserId(request);
 	const form = await request.formData();
 	const name = form.get('name');
 	const content = form.get('content');
@@ -125,7 +127,9 @@ export const action: ActionFunction = async ({ request }) => {
 		});
 	}
 
-	const joke = await db.joke.create({ data: fields });
+	const joke = await db.joke.create({
+		data: { ...fields, jokesterId: userId }
+	});
 
 	return redirect(`/jokes/${joke.id}`);
 };
