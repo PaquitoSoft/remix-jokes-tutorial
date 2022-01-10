@@ -74,6 +74,14 @@ function NewJokesRoute() {
 	);
 }
 
+export function ErrorBoundary() {
+	return (
+		<div className="error-container">
+			Something unexpected went wrong. Sorry about that.
+		</div>
+	);
+}
+
 function validateJokeContent(content: string) {
 	if (content.length < 10) {
 		return 'That joke is too short';
