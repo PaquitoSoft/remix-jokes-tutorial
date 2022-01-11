@@ -4,6 +4,7 @@ import {
 	Outlet,
 	Links,
 	Meta,
+	Scripts,
 	useCatch
 } from "remix";
 
@@ -27,6 +28,7 @@ function Document(
 
 			<body>
 				{children}
+				<Scripts />
 				{process.env.NODE_ENV === "development" && <LiveReload />}
 			</body>
 		</html>

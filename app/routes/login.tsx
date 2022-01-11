@@ -1,6 +1,7 @@
 import type { LinksFunction, ActionFunction, MetaFunction } from "remix";
 import {
 	Link,
+	Form,
 	useSearchParams,
 	useActionData,
 	json
@@ -46,7 +47,7 @@ function Login() {
 		<div className="container">
 			<div className="content" data-light>
 				<h1>Login</h1>
-				<form
+				<Form
 					method="post"
 					aria-describedby={actionData?.formError ? 'form-error-message' : undefined}
 				>
@@ -91,7 +92,7 @@ function Login() {
 						}
 					</div>
 					<button type="submit" className="button">Submit</button>
-				</form>
+				</Form>
 			</div>
 
 			<div className="links">
