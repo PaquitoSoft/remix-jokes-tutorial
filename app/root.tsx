@@ -1,8 +1,9 @@
+import type { LinksFunction, MetaFunction } from 'remix';
 import {
 	LiveReload,
 	Outlet,
 	Links,
-	LinksFunction,
+	Meta,
 	useCatch
 } from "remix";
 
@@ -19,6 +20,7 @@ function Document(
 			<head>
 				<meta charSet="utf-8" />
 				<meta name="viewport" content="width=device-width,initial-scale=1" />
+				<Meta />
 				<title>{title}</title>
 				<Links />
 			</head>
@@ -71,5 +73,16 @@ export const links: LinksFunction = () => {
 		{ rel: 'stylesheet', href: globalLargeStylesUrl, media: 'screen and (min-width: 1024px)' }
 	];
 }
+
+export const meta: MetaFunction = () => ({
+	description: 'Learn Remix and laugh at the same time!',
+	keywords: 'Remix,jokes',
+	"twitter:image": "https://remix-jokes.lol/social.png",
+	"twitter:card": "summary_large_image",
+	"twitter:creator": "@remix_run",
+	"twitter:site": "@remix_run",
+	"twitter:title": "Remix Jokes",
+	"twitter:description": 'Learn Remix and laugh at the same time!'
+});
 
 export default App;

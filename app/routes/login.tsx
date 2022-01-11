@@ -1,4 +1,4 @@
-import type { LinksFunction, ActionFunction } from "remix";
+import type { LinksFunction, ActionFunction, MetaFunction } from "remix";
 import {
 	Link,
 	useSearchParams,
@@ -207,5 +207,10 @@ export const action: ActionFunction = async ({ request }) => {
 export const links: LinksFunction = () => {
 	return [{ rel: 'stylesheet', href: stylesUrl }];
 };
+
+export const meta: MetaFunction = () => ({
+	title: 'Remix Jokex | Login',
+	description: 'Login to submit your own jokes to Remix Jokes!'
+});
 
 export default Login;
